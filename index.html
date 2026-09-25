@@ -1,276 +1,171 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Modern Image Gallery</title>
+    <title>Music Player</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <div class="music-player">
 
-    <header class="header">
+        <!-- Header -->
+        <div class="header">
 
-        <div class="container">
+            <div>
+                <p>MUSIC PLAYER</p>
+                <h1>Melody<span>Box</span></h1>
+            </div>
 
-            <h1>Explore Gallery</h1>
+            <label class="add-music">
+                + Add Music
 
-            <p>
-                Discover beautiful moments through our collection
-            </p>
+                <input
+                    type="file"
+                    id="musicInput"
+                    accept="audio/*"
+                    multiple
+                    hidden
+                >
+            </label>
 
         </div>
 
-    </header>
 
+        <!-- Now Playing -->
+        <div class="now-playing">
 
-    <!-- ================= FILTER BUTTONS ================= -->
-
-    <section class="gallery-section">
-
-        <div class="container">
-
-            <div class="filters">
-
-                <button class="filter-btn active" data-category="all">
-                    All
-                </button>
-
-                <button class="filter-btn" data-category="nature">
-                    Nature
-                </button>
-
-                <button class="filter-btn" data-category="city">
-                    City
-                </button>
-
-                <button class="filter-btn" data-category="travel">
-                    Travel
-                </button>
-
+            <div class="album-art" id="albumArt">
+                🎵
             </div>
 
+            <div class="song-details">
 
-            <!-- ================= IMAGE GALLERY ================= -->
+                <small>NOW PLAYING</small>
 
-            <div class="gallery">
+                <h2 id="songTitle">
+                    No song selected
+                </h2>
 
-                <!-- Image 1 -->
-                <div class="gallery-item" data-category="nature">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80"
-                        alt="Beautiful mountain landscape"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Mountain Escape</h3>
-
-                        <p>Nature</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 2 -->
-                <div class="gallery-item" data-category="nature">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
-                        alt="Green forest"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Green Forest</h3>
-
-                        <p>Nature</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 3 -->
-                <div class="gallery-item" data-category="city">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80"
-                        alt="City skyline"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>City Lights</h3>
-
-                        <p>City</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 4 -->
-                <div class="gallery-item" data-category="travel">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-                        alt="Beautiful beach"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Beach Paradise</h3>
-
-                        <p>Travel</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 5 -->
-                <div class="gallery-item" data-category="travel">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"
-                        alt="Mountain valley"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Adventure</h3>
-
-                        <p>Travel</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 6 -->
-                <div class="gallery-item" data-category="city">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=800&q=80"
-                        alt="City buildings"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Urban Life</h3>
-
-                        <p>City</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 7 -->
-                <div class="gallery-item" data-category="nature">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
-                        alt="Mountain lake"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Peaceful Lake</h3>
-
-                        <p>Nature</p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Image 8 -->
-                <div class="gallery-item" data-category="travel">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
-                        alt="Travel destination"
-                    >
-
-                    <div class="image-overlay">
-
-                        <h3>Wanderlust</h3>
-
-                        <p>Travel</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= LIGHTBOX ================= -->
-
-    <div class="lightbox" id="lightbox">
-
-        <!-- Close button -->
-        <button class="close-btn" id="closeBtn">
-            &times;
-        </button>
-
-
-        <!-- Previous button -->
-        <button class="nav-btn prev-btn" id="prevBtn">
-            &#10094;
-        </button>
-
-
-        <!-- Image container -->
-        <div class="lightbox-content">
-
-            <img id="lightboxImage" src="" alt="">
-
-            <div class="lightbox-info">
-
-                <h2 id="lightboxTitle"></h2>
-
-                <p id="lightboxCategory"></p>
-
-                <span id="imageCounter"></span>
+                <p id="artist">
+                    Add a song to start playing
+                </p>
 
             </div>
 
         </div>
 
 
-        <!-- Next button -->
-        <button class="nav-btn next-btn" id="nextBtn">
-            &#10095;
-        </button>
+        <!-- Audio -->
+        <audio id="audio"></audio>
+
+
+        <!-- Time -->
+        <div class="time">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <span id="totalTime">
+                0:00
+            </span>
+
+        </div>
+
+
+        <!-- Progress Bar -->
+        <input
+            type="range"
+            id="progress"
+            min="0"
+            max="100"
+            value="0"
+        >
+
+
+        <!-- Controls -->
+        <div class="controls">
+
+            <button id="shuffle">
+                🔀
+            </button>
+
+            <button id="previous">
+                ⏮
+            </button>
+
+            <button id="playPause" class="play">
+                ▶
+            </button>
+
+            <button id="next">
+                ⏭
+            </button>
+
+            <button id="repeat">
+                🔁
+            </button>
+
+        </div>
+
+
+        <!-- Volume -->
+        <div class="volume">
+
+            <span>🔊</span>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.8"
+            >
+
+        </div>
+
+
+        <!-- Playlist -->
+        <div class="playlist">
+
+            <div class="playlist-title">
+
+                <h3>My Playlist</h3>
+
+                <span id="songCount">
+                    0 songs
+                </span>
+
+            </div>
+
+
+            <div id="playlist">
+
+                <div class="empty">
+
+                    No songs added yet.<br>
+                    Click "+ Add Music" to add songs.
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-            © 2026 Modern Image Gallery | Internship Project
-        </p>
-
-    </footer>
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
