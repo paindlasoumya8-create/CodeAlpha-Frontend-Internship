@@ -1,173 +1,491 @@
+/* ================= GENERAL ================= */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
 
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-family: Arial, sans-serif;
-
-    background: linear-gradient(
-        135deg,
-        #141e30,
-        #243b55
-    );
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
 
-.calculator {
-    width: 360px;
+/* ================= HEADER ================= */
 
-    padding: 25px;
+.header {
+    text-align: center;
+    padding: 70px 20px 50px;
 
-    border-radius: 25px;
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
 
-    background: #111827;
+    color: white;
+}
+
+.header h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+
+/* ================= GALLERY SECTION ================= */
+
+.gallery-section {
+    padding: 50px 0;
+}
+
+
+/* ================= FILTERS ================= */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    border: none;
+    padding: 12px 25px;
+
+    border-radius: 30px;
+
+    background: white;
+    color: #444;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.filter-btn:hover {
+    transform: translateY(-3px);
+}
+
+.filter-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+
+/* ================= GALLERY GRID ================= */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ================= GALLERY ITEM ================= */
+
+.gallery-item {
+    position: relative;
+
+    height: 280px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    background: #ddd;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ================= IMAGE ================= */
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+
+    filter: brightness(0.7);
+}
+
+
+/* ================= IMAGE OVERLAY ================= */
+
+.image-overlay {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 25px 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.8)
+        );
+
+    transform: translateY(100%);
+
+    transition:
+        transform 0.4s ease;
+}
+
+.gallery-item:hover .image-overlay {
+    transform: translateY(0);
+}
+
+.image-overlay h3 {
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+.image-overlay p {
+    font-size: 14px;
+
+    opacity: 0.8;
+}
+
+
+/* ================= HIDDEN ITEMS ================= */
+
+.gallery-item.hidden {
+    display: none;
+}
+
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.94);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+    z-index: 1000;
+}
+
+.lightbox.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ================= LIGHTBOX CONTENT ================= */
+
+.lightbox-content {
+    max-width: 900px;
+
+    width: 80%;
+
+    text-align: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    border-radius: 10px;
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 
-h2 {
-    margin-top: 0;
+/* ================= LIGHTBOX INFO ================= */
 
-    margin-bottom: 20px;
-
-    text-align: center;
-
+.lightbox-info {
     color: white;
+
+    margin-top: 15px;
+}
+
+.lightbox-info h2 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+.lightbox-info p {
+    color: #bbb;
+
+    margin-bottom: 8px;
+}
+
+#imageCounter {
+    font-size: 14px;
+
+    color: #aaa;
 }
 
 
-/* Display */
+/* ================= CLOSE BUTTON ================= */
 
-#display {
+.close-btn {
+    position: absolute;
 
-    width: 100%;
-
-    height: 80px;
-
-    padding: 15px;
-
-    margin-bottom: 20px;
+    top: 25px;
+    right: 35px;
 
     border: none;
 
-    outline: none;
-
-    border-radius: 15px;
-
-    background: #020617;
+    background: none;
 
     color: white;
 
-    font-size: 35px;
-
-    text-align: right;
-}
-
-
-/* Buttons */
-
-.buttons {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 10px;
-}
-
-
-button {
-
-    height: 65px;
-
-    border: none;
-
-    border-radius: 15px;
-
-    background: #1f2937;
-
-    color: white;
-
-    font-size: 21px;
-
-    font-weight: bold;
+    font-size: 45px;
 
     cursor: pointer;
 
-    transition: 0.15s;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+
+    color: #667eea;
 }
 
 
-button:hover {
+/* ================= NAVIGATION BUTTONS ================= */
 
-    background: #374151;
+.nav-btn {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+
+    transform:
+        translateY(-50%)
+        scale(1.1);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
 }
 
 
-button:active {
+/* ================= FOOTER ================= */
 
-    transform: scale(0.92);
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    background: #111;
+
+    color: #aaa;
+
+    font-size: 14px;
 }
 
 
-/* Operators */
+/* ================= TABLET ================= */
 
-.operator {
+@media (max-width: 1000px) {
 
-    background: #2563eb;
+    .gallery {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .gallery-item {
+        height: 250px;
+    }
+
+    .header h1 {
+        font-size: 40px;
+    }
 }
 
 
-.operator:hover {
+/* ================= MOBILE ================= */
 
-    background: #1d4ed8;
+@media (max-width: 700px) {
+
+    .gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .gallery-item {
+        height: 220px;
+
+        border-radius: 10px;
+    }
+
+    .header {
+        padding: 50px 15px 40px;
+    }
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .header p {
+        font-size: 15px;
+    }
+
+    .lightbox-content {
+        width: 90%;
+    }
+
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+
+        font-size: 22px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .close-btn {
+        right: 15px;
+        top: 10px;
+
+        font-size: 40px;
+    }
 }
 
 
-/* Special */
+/* ================= SMALL MOBILE ================= */
 
-.special {
+@media (max-width: 450px) {
 
-    background: #4b5563;
-}
+    .gallery {
+        grid-template-columns: 1fr;
+    }
 
+    .gallery-item {
+        height: 260px;
+    }
 
-.special:hover {
+    .filter-btn {
+        padding: 10px 18px;
 
-    background: #6b7280;
-}
+        font-size: 14px;
+    }
 
-
-/* Equal */
-
-.equals {
-
-    background: #16a34a;
-}
-
-
-.equals:hover {
-
-    background: #15803d;
-}
-
-
-/* Zero */
-
-.zero {
-
-    grid-column: span 2;
+    .lightbox-content img {
+        max-height: 60vh;
+    }
 }
