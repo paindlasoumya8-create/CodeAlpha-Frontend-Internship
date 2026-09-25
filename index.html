@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Working Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>Calculator</h2>
+
+        <!-- Display -->
+        <input
+            type="text"
+            id="display"
+            value="0"
+            readonly
+        >
+
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <button onclick="clearDisplay()" class="special">
+                AC
+            </button>
+
+            <button onclick="deleteNumber()" class="special">
+                DEL
+            </button>
+
+            <button onclick="percentage()" class="special">
+                %
+            </button>
+
+            <button onclick="chooseOperator('/')" class="operator">
+                ÷
+            </button>
+
+
+            <button onclick="numberClicked('7')">
+                7
+            </button>
+
+            <button onclick="numberClicked('8')">
+                8
+            </button>
+
+            <button onclick="numberClicked('9')">
+                9
+            </button>
+
+            <button onclick="chooseOperator('*')" class="operator">
+                ×
+            </button>
+
+
+            <button onclick="numberClicked('4')">
+                4
+            </button>
+
+            <button onclick="numberClicked('5')">
+                5
+            </button>
+
+            <button onclick="numberClicked('6')">
+                6
+            </button>
+
+            <button onclick="chooseOperator('-')" class="operator">
+                −
+            </button>
+
+
+            <button onclick="numberClicked('1')">
+                1
+            </button>
+
+            <button onclick="numberClicked('2')">
+                2
+            </button>
+
+            <button onclick="numberClicked('3')">
+                3
+            </button>
+
+            <button onclick="chooseOperator('+')" class="operator">
+                +
+            </button>
+
+
+            <button
+                onclick="numberClicked('0')"
+                class="zero"
+            >
+                0
+            </button>
+
+            <button onclick="decimalClicked()">
+                .
+            </button>
+
+            <button
+                onclick="calculate()"
+                class="equals"
+            >
+                =
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
